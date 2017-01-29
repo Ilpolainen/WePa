@@ -1,4 +1,16 @@
 class Beer < ActiveRecord::Base
+include Ratable
+
   belongs_to :brewery
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
+
+
+
+
+
+
+  def to_s
+    return "#{self.name}, #{self.brewery.name}"
+  end
+
 end

@@ -29,7 +29,11 @@ group :development, :test do
   gem 'pry-rails'
 end
 
-
+group :development, :test do
+  gem "better_errors"
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+end
 
 group :production do
   gem 'pg'
