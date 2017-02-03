@@ -13,7 +13,7 @@
   <strong>Brewery:</strong>
   <%= link_to @breweries.find(@beer.brewery_id).name, @breweries.find(@beer.brewery_id) %>
 </p>
-  <%= @beer.average_rating %>
+  Has: <%= @beer.ratings.count %> <%= "rating".pluralize(@beer.ratings.count)%>, average <%= @beer.average_rating %>
 <p>
 
 </p>
