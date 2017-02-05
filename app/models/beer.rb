@@ -1,8 +1,11 @@
 class Beer < ActiveRecord::Base
 include Ratable
 
-  belongs_to :brewery
-  has_many :ratings, dependent: :destroy
+  validates :name, presence: true
+
+belongs_to :brewery
+has_many :ratings, dependent: :destroy
+has_many :raters, -> { uniq }, through: :ratings, source: :user
 
 
 
