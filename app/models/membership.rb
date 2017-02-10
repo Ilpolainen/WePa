@@ -1,7 +1,5 @@
 class Membership < ActiveRecord::Base
-  belongs_to :beerclub
   belongs_to :user
+  belongs_to :beerclub
 
-  validates :user_id, presence: true
-  validates :beer_club_id, presence: true
 end
