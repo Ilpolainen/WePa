@@ -15,17 +15,20 @@ class MembershipsController < ApplicationController
   # GET /memberships/new
   def new
     @membership = Membership.new
+    @beerclubs = Beerclub.all.reject { |club|  club.users.include? current_user }
   end
 
   # GET /memberships/1/edit
   def edit
+    @membership = Membership.new
+    @beerclubs = Beerclub.all
   end
 
   # POST /memberships
   # POST /memberships.json
   def create
     @membership = Membership.new(membership_params)
-
+    @membership.user_id = current_user.id
     respond_to do |format|
       if @membership.save
         format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
@@ -69,6 +72,6 @@ class MembershipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params.fetch(:membership, {})
+      params.require(:membership).permit(:beer_club_id)
     end
 end

@@ -15,10 +15,13 @@
   <%= link_to 'beers', beers_path %>
   <%= link_to 'ratings', ratings_path %>
   <%= link_to 'users', users_path %>
+  <%= link_to 'beer clubs', beerclubs_path %>
+  <%= link_to 'memberships', memberships_path %>
   |
   <% if current_user %>
       <%=  link_to current_user.username, user_path(current_user) %>
       <%= link_to 'rate a beer', new_rating_path %>
+      <%= link_to 'register a beerclub', new_beerclub_path %>
       <%= link_to 'join a club', new_membership_path %>
       <%= link_to 'sign out', session_path, method: :delete %>
   <% else %>
@@ -27,9 +30,7 @@
   <% end %>
 </nav>
 
-<% if current_user %>
-    <p><%= current_user.username %> signed in</p>
-<% end %>
+
 
 <%= yield %>
 

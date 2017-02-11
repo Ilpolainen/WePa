@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :memberships
+  post 'memberships/new', to: 'memberships#create'
 
   resources :beerclubs
 
